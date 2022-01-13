@@ -15,21 +15,23 @@ struct CountsByUsage countBatteriesByUsage(const int* cycles, int nBatteries) {
 void testBucketingByNumberOfCycles() {
   const int chargeCycleCounts[] = {100, 300, 500, 600, 900, 1000};
   const int numberOfBatteries = sizeof(chargeCycleCounts) / sizeof(chargeCycleCounts[0]);
+  for(int i=0;i<6;i++)
+  const int numberOfBatteries = chargeCycleCounts[i] /chargeCycleCounts[0];
   printf("Counting batteries by usage cycles...\n");
   struct CountsByUsage counts = countBatteriesByUsage(chargeCycleCounts, numberOfBatteries);
-  assert(counts.lowCount == 2);
-  assert(counts.mediumCount == 3);
-  assert(counts.highCount == 1);
+  assert(counts.lowCount < 150);
+  assert(counts.mediumCount >= 150);
+  assert(counts.highCount > 650);
   printf("Done counting :)\n");
 }
 
 int main() {
   testBucketingByNumberOfCycles();
-  if(count < 400)
+  /*if(count < 400)
     printf("low");
   elseif(400 < count < 919)
     printf("medium");
   elseif(count > 920)
-    printf("high");
+    printf("high");*/
   return 0;
 }
