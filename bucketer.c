@@ -25,5 +25,11 @@ void testBucketingByNumberOfCycles() {
 
 int main() {
   testBucketingByNumberOfCycles();
+  if(count < 400)
+    printf("low");
+  elseif(400 < count < 919)
+    printf("medium");
+  elseif(count > 920)
+    printf("high");
   return 0;
 }
